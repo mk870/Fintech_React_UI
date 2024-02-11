@@ -1,9 +1,13 @@
+import AppInitHOC from 'HOCs/AppInitialization/AppInitHOC'
 import React from 'react'
 
-const Layout = () => {
+const Layout = ({children,themeMode,screenSize, mobileMenu}) => {
+  console.log(themeMode,mobileMenu,screenSize);
   return (
-    <div>Layout</div>
+    <div>
+      {children}
+    </div>
   )
 }
 
-export default Layout
+export default AppInitHOC(Layout)
