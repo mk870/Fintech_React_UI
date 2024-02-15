@@ -2,7 +2,7 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div style={{width:"100%",position:"relative"}}>Home hshhshshhshshhshhs</div>
   )
 }
 

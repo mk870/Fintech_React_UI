@@ -14,7 +14,7 @@ const AppInitHOC = (WrappedComponent) => {
     }, []);
     useEffect(() => {
       if (screenSize) {
-        if (screenSize <= 920) {
+        if (screenSize <= 950) {
           setMobileMenu(true);
         } else {
           setMobileMenu(false);
