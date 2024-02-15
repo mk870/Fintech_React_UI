@@ -1,13 +1,32 @@
-import AppInitHOC from 'HOCs/AppInitialization/AppInitHOC'
-import React from 'react'
+import React from "react";
 
-const Layout = ({children,themeMode,screenSize, mobileMenu}) => {
-  console.log(themeMode,mobileMenu,screenSize);
+import AppInitHOC from "HOCs/AppInitialization/AppInitHOC";
+import * as styled from "./LayoutStyles";
+import MobileView from "./Views/MobileView/MobileView";
+import WebView from "./Views/WebView/WebView";
+
+const Layout = ({ children, themeMode, mobileMenu, screenSize }) => {
   return (
-    <div>
-      {children}
-    </div>
-  )
-}
+    <styled.container>
+      {mobileMenu ? (
+        <MobileView
+          themeMode={themeMode}
+          mobileView={mobileMenu}
+          screenSize={screenSize}
+        >
+          {children}
+        </MobileView>
+      ) : (
+        <WebView
+          themeMode={themeMode}
+          mobileView={mobileMenu}
+          screenSize={screenSize}
+        >
+          {children}
+        </WebView>
+      )}
+    </styled.container>
+  );
+};
 
-export default AppInitHOC(Layout)
+export default AppInitHOC(Layout);

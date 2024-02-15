@@ -12,5 +12,6 @@ export const Globalstyles = createGlobalStyle`
     right:0;
     bottom:0;
     padding:0;
+    box-sizing: border-box;
     overflow-x:hidden;
   }`

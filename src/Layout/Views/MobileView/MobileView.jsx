@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
 
-const MobileView = () => {
+import * as styled from "./MobileViewStyles";
+import Navbar from "Layout/Navbar/Navbar";
+
+const MobileView = ({ children, mobileView, themeMode, screenSize }) => {
   return (
-    <div>MobileView</div>
-  )
-}
+    <styled.Container themeMode={themeMode}>
+      <Navbar mobileView={mobileView} screenSize={screenSize} />
+      <styled.Pages themeMode={themeMode}>{children}</styled.Pages>
+    </styled.Container>
+  );
+};
 
-export default MobileView
+export default MobileView;
