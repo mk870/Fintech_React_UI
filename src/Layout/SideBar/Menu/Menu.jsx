@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTheme } from "styled-components";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 
 import * as Styled from "./MenuStyles";
 import { menuList } from "Utils/MenuList";
 import { menuGroups } from "Utils/Constants";
-import MenuGroup from "components/Menu/MenuGroup/MenuGroup";
-import MenuGroupItems from "components/Menu/MenuGroupItems/MenuGroupItems";
-import MenuItem from "components/Menu/MenuItem/MenuItem";
+import MenuGroup from "./MenuGroup/MenuGroup";
+import MenuGroupItems from "./MenuGroupItems/MenuGroupItems";
+import MenuItem from "./MenuItem/MenuItem";
 import ThemeToggler from "components/ThemeToggler/ThemeToggler";
 import { AppContext } from "Context/AppContext";
 
@@ -20,6 +20,7 @@ const Menu = ({ themeMode }) => {
   const [closeGroup, setCloseGroup] = useState(null);
   const theme = useTheme();
   const { accessToken, setAccessToken } = useContext(AppContext);
+  const navigate = useNavigate();
   const delayTime = 800;
   const stateChangeDelay = (groupName) => {
     if (menuGroupOpened === null) setMenuGroupOpened(groupName);
@@ -44,6 +45,10 @@ const Menu = ({ themeMode }) => {
     menuGroupOpened === groupName
       ? theme.general.colors.primary
       : theme.general.colors.secondary;
+  const onNavigate = (route) => {
+    setClickedItem(route);
+    navigate(route);
+  };
   return (
     <Styled.Container>
       <Styled.TopSection>
@@ -53,7 +58,7 @@ const Menu = ({ themeMode }) => {
             <MenuItem
               key={item.route}
               isClicked={clickedItem === item.route ? true : false}
-              onClickFunc={() => setClickedItem(item.route)}
+              onClickFunc={() => onNavigate(item.route)}
               item={item}
             />
           ))}
@@ -71,7 +76,7 @@ const Menu = ({ themeMode }) => {
               (item) => item.group === menuGroups.markets
             )}
             clickedItem={clickedItem}
-            setClickedItem={setClickedItem}
+            navigate={onNavigate}
             isClosed={closeGroup === menuGroups.markets ? true : false}
           />
         )}
@@ -87,7 +92,7 @@ const Menu = ({ themeMode }) => {
               (item) => item.group === menuGroups.news
             )}
             clickedItem={clickedItem}
-            setClickedItem={setClickedItem}
+            navigate={onNavigate}
             isClosed={closeGroup === menuGroups.news ? true : false}
           />
         )}
@@ -105,7 +110,7 @@ const Menu = ({ themeMode }) => {
               (item) => item.group === menuGroups.watchlist
             )}
             clickedItem={clickedItem}
-            setClickedItem={setClickedItem}
+            navigate={onNavigate}
             isClosed={closeGroup === menuGroups.watchlist ? true : false}
           />
         )}
@@ -115,7 +120,7 @@ const Menu = ({ themeMode }) => {
             <MenuItem
               key={item.route}
               isClicked={clickedItem === item.route ? true : false}
-              onClickFunc={() => setClickedItem(item.route)}
+              onClickFunc={() => onNavigate(item.route)}
               item={item}
             />
           ))}
@@ -125,7 +130,7 @@ const Menu = ({ themeMode }) => {
             <MenuItem
               key={item.route}
               isClicked={clickedItem === item.route ? true : false}
-              onClickFunc={() => setClickedItem(item.route)}
+              onClickFunc={() => onNavigate(item.route)}
               item={item}
             />
           ))}
@@ -136,7 +141,7 @@ const Menu = ({ themeMode }) => {
               <MenuItem
                 key={item.route}
                 isClicked={clickedItem === item.route ? true : false}
-                onClickFunc={() => setClickedItem(item.route)}
+                onClickFunc={() => onNavigate(item.route)}
                 item={item}
               />
             ))

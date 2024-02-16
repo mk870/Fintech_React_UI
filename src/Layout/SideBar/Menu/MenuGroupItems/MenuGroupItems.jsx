@@ -4,12 +4,7 @@ import { useTheme } from "styled-components";
 
 import * as styled from "./MenuGroupItemsStyles";
 
-const MenuGroupItems = ({
-  listItems,
-  setClickedItem,
-  clickedItem,
-  isClosed,
-}) => {
+const MenuGroupItems = ({ listItems, navigate, clickedItem, isClosed }) => {
   const themeMode = useSelector((state) => state.user.value.themeMode);
   const theme = useTheme();
   const getAnimationTime = (index) => {
@@ -33,7 +28,7 @@ const MenuGroupItems = ({
         <styled.row
           key={item.route}
           color={highlightColor(item, clickedItem)}
-          onClick={() => setClickedItem(item.route)}
+          onClick={() => navigate(item.route)}
           animationTime={getAnimationTime(index)}
           isClosed={isClosed}
         >
