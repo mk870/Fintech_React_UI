@@ -1,9 +1,13 @@
+import PageWrapperHOC from 'HOCs/PageWrapper/PageWrapperHOC'
+import { PageContainer } from 'pages/PageStyles'
 import React from 'react'
 
-const Home = () => {
+const Home = ({themeMode,themes}) => {
   return (
-    <div style={{width:"100%",position:"relative"}}>Home hshhshshhshshhshhs</div>
+    <PageContainer themeMode={themeMode}>
+      homemememmeme{themeMode}
+    </PageContainer>
   )
 }
 
-export default Home
+export default PageWrapperHOC(Home)

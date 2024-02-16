@@ -1,8 +1,8 @@
 import React from "react";
 
 import * as Styled from "./SideBarStyles";
-import logo from "../../../../Assets/logo.png";
-import Menu from "components/Menu/Menu";
+import logo from "Assets/logo.png";
+import Menu from "./Menu/Menu";
 
 const SideBar = ({ themeMode }) => {
   return (
