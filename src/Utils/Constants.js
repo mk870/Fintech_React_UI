@@ -8,3 +8,10 @@ export const menuGroups = {
   login:"security",
   logout:"security"
 }
+
+export const passwordGuideLines = [
+  "longer than 8 characters",
+  "have atleast 1 special character",
+  "have atleast 1 number",
+  "have atleast 1 capital letter",
+];
