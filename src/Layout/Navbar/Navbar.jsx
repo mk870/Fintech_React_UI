@@ -8,11 +8,14 @@ import InputField from "components/InputField/InputField";
 import { AppTheme } from "Styles/AppThemes";
 import { AppContext } from "Context/AppContext";
 import Drawer from "Layout/Views/MobileView/Drawer/Drawer";
+import { useNavigate } from "react-router-dom";
+import { urls } from "Utils/AppURLs";
 
 const Navbar = ({ mobileView, screenSize }) => {
   const [searchItem, setSearchItem] = useState("");
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
   const user = useSelector((state) => state.user.value);
+  const navigate = useNavigate()
   const theme = AppTheme;
   const { accessToken } = useContext(AppContext);
   const onChange = (value) => {
@@ -76,7 +79,7 @@ const Navbar = ({ mobileView, screenSize }) => {
         {accessToken ? (
           <styled.Profile color={user.themeColor}>MN</styled.Profile>
         ) : (
-          <styled.Login>Login</styled.Login>
+          <styled.Login onClick={()=>navigate(urls.login)}>Login</styled.Login>
         )}
       </styled.SectionTwo>
       {openMobileMenu && <Drawer toggleMenu={setOpenMobileMenu} />}

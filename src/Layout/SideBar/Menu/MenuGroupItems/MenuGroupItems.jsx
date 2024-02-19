@@ -22,6 +22,12 @@ const MenuGroupItems = ({ listItems, navigate, clickedItem, isClosed }) => {
         : theme.dark.tertiary;
     }
   };
+  const textColor = (route)=>{
+    if(clickedItem === route){
+      if (themeMode === "light") return theme.general.colors.primary;
+      else return theme.general.button.onHover.normal;
+    }else return theme.general.colors.secondary;
+  }
   return (
     <styled.Container isClosed={isClosed} themeMode={themeMode}>
       {listItems.map((item, index) => (
@@ -33,7 +39,7 @@ const MenuGroupItems = ({ listItems, navigate, clickedItem, isClosed }) => {
           isClosed={isClosed}
         >
           <styled.icon>{item.icon}</styled.icon>
-          <styled.text clicked={clickedItem === item.route ? true : false}>
+          <styled.text color={textColor(item.route)}>
             {item.name}
           </styled.text>
         </styled.row>

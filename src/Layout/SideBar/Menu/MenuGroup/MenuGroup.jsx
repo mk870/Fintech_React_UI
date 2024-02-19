@@ -20,12 +20,15 @@ const MenuGroup = ({ isMenuGroupOpen, iconColor, onClickFunc, text }) => {
   const menuGroupIconStyles = {
     marginRight: 8,
   };
+  const highlightedIconColor  = ()=>{
+    return theme.general.colors.secondary
+  }
   const highlightedIcon = () => {
     if (text === "Markets")
       return (
         <RiPieChartFill
           size={20}
-          color={theme.general.colors.secondary}
+          color={highlightedIconColor()}
           style={menuGroupIconStyles}
         />
       );
@@ -33,7 +36,7 @@ const MenuGroup = ({ isMenuGroupOpen, iconColor, onClickFunc, text }) => {
       return (
         <FaNewspaper
           size={20}
-          color={theme.general.colors.secondary}
+          color={highlightedIconColor()}
           style={menuGroupIconStyles}
         />
       );
@@ -41,7 +44,7 @@ const MenuGroup = ({ isMenuGroupOpen, iconColor, onClickFunc, text }) => {
       return (
         <IoEye
           size={20}
-          color={theme.general.colors.secondary}
+          color={highlightedIconColor()}
           style={menuGroupIconStyles}
         />
       );
@@ -51,7 +54,7 @@ const MenuGroup = ({ isMenuGroupOpen, iconColor, onClickFunc, text }) => {
       return (
         <AiOutlinePieChart
           size={20}
-          color={theme.general.colors.secondary}
+          color={highlightedIconColor()}
           style={menuGroupIconStyles}
         />
       );
@@ -59,7 +62,7 @@ const MenuGroup = ({ isMenuGroupOpen, iconColor, onClickFunc, text }) => {
       return (
         <FaRegNewspaper
           size={20}
-          color={theme.general.colors.secondary}
+          color={highlightedIconColor()}
           style={menuGroupIconStyles}
         />
       );
@@ -67,7 +70,7 @@ const MenuGroup = ({ isMenuGroupOpen, iconColor, onClickFunc, text }) => {
       return (
         <BsEye
           size={20}
-          color={theme.general.colors.secondary}
+          color={highlightedIconColor()}
           style={menuGroupIconStyles}
         />
       );

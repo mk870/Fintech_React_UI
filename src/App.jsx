@@ -7,10 +7,12 @@ import Layout from "Layout/Layout";
 import { routesList } from "Routes/Routes";
 import { useLocaleStorage } from "Utils/useLocalStorage";
 import { AppContext } from "Context/AppContext";
+import { useSelector } from "react-redux";
 
 const App = () => {
   // const [accessToken, setAccessToken] = useLocaleStorage(null, "finWiseToken");
   const [accessToken, setAccessToken] = useState("ok");
+  const user = useSelector((state) => state.user.value);
   return (
     <AppContext.Provider
       value={{
@@ -20,7 +22,7 @@ const App = () => {
     >
       <BrowserRouter>
         <ThemeWrapper>
-          <Globalstyles />
+          <Globalstyles themeMode={user.themeMode} />
           <Layout>
             <Routes>
               {routesList("accessToken").routes.map((route, index) => (

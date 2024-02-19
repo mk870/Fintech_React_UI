@@ -12,6 +12,8 @@ export const Container = styled.div`
   padding: 15px;
   gap: 20px;
   width: 400px;
+  box-shadow: ${({ themeMode }) =>
+    themeMode === "light" ? theme.light.boxShadow : theme.dark.boxShadow};
   background-color: ${({ themeMode, theme }) =>
     themeMode === "light"
       ? theme.light.primaryBackground
@@ -93,6 +95,10 @@ export const googleAuth = styled.div`
   font-size: ${theme.general.fontSize.sm};
   border-radius: 5px;
   border: 1px solid ${theme.general.colors.secondary};
+  background-color: ${({ themeMode }) =>
+    themeMode === "light"
+      ? theme.light.secondaryBackground
+      : theme.dark.secondaryBackground};
   margin-top: -20px;
   &:hover {
     cursor: pointer;
@@ -105,8 +111,10 @@ export const googleAuthTextWrapper = styled.div`
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   padding: 0px 5px;
-  color: ${theme.dark.textColor};
-  background-color: #618af0;
-  height: 100%;
+  color: ${({ themeMode }) =>
+    themeMode === "light"
+      ? theme.light.textColor
+      : theme.dark.textColor};
+  height: 25px;
   font-size: ${theme.general.fontSize.sm};
 `;

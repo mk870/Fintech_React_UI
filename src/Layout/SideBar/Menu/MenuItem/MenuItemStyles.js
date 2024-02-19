@@ -9,8 +9,7 @@ export const Container = styled.div`
   border-radius: 7px;
   box-sizing: border-box;
   padding: 0px 5px;
-  background-color: ${(props) =>
-    props.color};
+  background-color: ${(props) => props.color};
   &:hover {
     cursor: pointer;
   }
@@ -26,11 +25,8 @@ export const icon = styled.div`
 
 export const text = styled.span`
   text-align: center;
-  font-weight: ${({theme}) => theme.general.fontWeight.md};
+  font-weight: ${({ theme }) => theme.general.fontWeight.md};
   font-size: ${(props) => props.theme.general.fontSize.md};
   margin-top: 4px;
-  color: ${(props) =>
-    props.clicked
-      ? props.theme.general.colors.primary
-      : props.theme.general.colors.secondary};
+  color: ${(props) => props.color};
 `;

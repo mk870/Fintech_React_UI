@@ -9,7 +9,7 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: start;
-  padding-top: 20px;
+  padding: 20px 0px;
   height: 100%;
   width: 100%;
   animation: ${appear} 1.5s ease;

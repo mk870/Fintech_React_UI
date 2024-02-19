@@ -19,11 +19,14 @@ import {
 import { urls } from "./AppURLs";
 import { menuGroups } from "./Constants";
 
-export const menuList = (clickedItem) => {
+export const menuList = (clickedItem, themeMode) => {
   const appThemes = AppTheme;
   const size = 20;
   const notHighlightedColor = appThemes.general.colors.secondary;
-  const isHiglightedColor = appThemes.general.colors.primary;
+  const isHiglightedColor =
+    themeMode === "dark"
+      ? appThemes.general.button.onHover.normal
+      : appThemes.general.colors.primary;
   return [
     {
       name: "Home",
@@ -200,7 +203,7 @@ export const menuList = (clickedItem) => {
         ) : (
           <RiLoginBoxLine color={notHighlightedColor} size={size} />
         ),
-    }
+    },
   ];
 };
 
