@@ -9,6 +9,7 @@ import Button from "components/Button/Button";
 import { emailValidator, passwordValidator } from "Utils/UtilsFuncs";
 import { passwordGuideLines } from "Utils/Constants";
 import { FcGoogle } from "react-icons/fc";
+import { urls } from "Utils/AppURLs";
 
 const Login = ({ themeMode, themes }) => {
   const [email, setEmail] = useState("");
@@ -89,13 +90,16 @@ const Login = ({ themeMode, themes }) => {
         </styled.subContainer>
         <styled.Text>
           you don't have an account?{" "}
-          <styled.TextSpan onClick={() => navigate("/signup")} themeMode={themeMode}>
+          <styled.TextSpan
+            onClick={() => navigate(urls.signup)}
+            themeMode={themeMode}
+          >
             please signup here
           </styled.TextSpan>
         </styled.Text>
         <styled.googleAuth themeMode={themeMode}>
           <FcGoogle size={25} />
-          <styled.googleAuthTextWrapper>
+          <styled.googleAuthTextWrapper themeMode={themeMode}>
             login with google
           </styled.googleAuthTextWrapper>
         </styled.googleAuth>

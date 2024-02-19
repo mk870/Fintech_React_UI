@@ -16,10 +16,16 @@ const MenuItem = ({ item, isClicked, onClickFunc }) => {
       return isClicked ? theme.dark.secondaryBackground : theme.dark.tertiary;
     }
   };
+  const textColor = ()=>{
+    if(isClicked){
+      if(themeMode === "light") return theme.general.colors.primary
+      else return theme.general.button.onHover.normal
+    }else return theme.general.colors.secondary
+  }
   return (
     <styled.Container onClick={onClickFunc} color={highlightColor()}>
       <styled.icon>{item.icon}</styled.icon>
-      <styled.text clicked={isClicked}>{item.name}</styled.text>
+      <styled.text color={textColor()}>{item.name}</styled.text>
     </styled.Container>
   );
 };

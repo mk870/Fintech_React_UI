@@ -10,6 +10,7 @@ import Button from "components/Button/Button";
 import { passwordGuideLines } from "Utils/Constants";
 import { PageContainer } from "pages/PageStyles";
 import { AppTheme } from "Styles/AppThemes";
+import { urls } from "Utils/AppURLs";
 
 const SignUp = ({ themeMode, themes }) => {
   const [email, setEmail] = useState("");
@@ -38,25 +39,25 @@ const SignUp = ({ themeMode, themes }) => {
   useEffect(() => {
     if (password !== "") {
       passwordValidator(setIsPasswordValidationError, password);
-    }else{
-      setIsPasswordValidationError(false)
+    } else {
+      setIsPasswordValidationError(false);
     }
   }, [password]);
   useEffect(() => {
     if (email !== "") {
       emailValidator(setIsEmailValidationError, email);
-    }else{
-      setIsEmailValidationError(false)
+    } else {
+      setIsEmailValidationError(false);
     }
   }, [email]);
   useEffect(() => {
-    if(password && confirmPassword){
+    if (password && confirmPassword) {
       if (password !== confirmPassword) {
         setIsConfirmPasswordValidationError(true);
       } else {
         setIsConfirmPasswordValidationError(false);
       }
-    }else{
+    } else {
       setIsConfirmPasswordValidationError(false);
     }
   }, [confirmPassword]);
@@ -157,13 +158,16 @@ const SignUp = ({ themeMode, themes }) => {
         </styled.subContainer>
         <styled.Text>
           do you have an account?{" "}
-          <styled.TextSpan onClick={() => navigate("/login")} themeMode={themeMode}>
+          <styled.TextSpan
+            onClick={() => navigate(urls.login)}
+            themeMode={themeMode}
+          >
             please login here
           </styled.TextSpan>
         </styled.Text>
         <styled.googleAuth themeMode={themeMode}>
           <FcGoogle size={25} />
-          <styled.googleAuthTextWrapper>
+          <styled.googleAuthTextWrapper themeMode={themeMode}>
             signup with google
           </styled.googleAuthTextWrapper>
         </styled.googleAuth>

@@ -41,10 +41,12 @@ const Menu = ({ themeMode }) => {
   const logoutIconColor = () => {
     return theme.general.colors.secondary;
   };
-  const color = (groupName) =>
-    menuGroupOpened === groupName
-      ? theme.general.colors.primary
-      : theme.general.colors.secondary;
+  const color = (groupName) => {
+    if (menuGroupOpened === groupName) {
+      if (themeMode === "light") return theme.general.colors.primary;
+      else return theme.general.button.onHover.normal;
+    } else return theme.general.colors.secondary;
+  };
   const onNavigate = (route) => {
     setClickedItem(route);
     navigate(route);
@@ -52,7 +54,7 @@ const Menu = ({ themeMode }) => {
   return (
     <Styled.Container>
       <Styled.TopSection>
-        {menuList(clickedItem)
+        {menuList(clickedItem,themeMode)
           .filter((item) => item.group === menuGroups.general)
           .map((item) => (
             <MenuItem
@@ -72,7 +74,7 @@ const Menu = ({ themeMode }) => {
         />
         {menuGroupOpened === menuGroups.markets && (
           <MenuGroupItems
-            listItems={menuList(clickedItem).filter(
+            listItems={menuList(clickedItem,themeMode).filter(
               (item) => item.group === menuGroups.markets
             )}
             clickedItem={clickedItem}
@@ -88,7 +90,7 @@ const Menu = ({ themeMode }) => {
         />
         {menuGroupOpened === menuGroups.news && (
           <MenuGroupItems
-            listItems={menuList(clickedItem).filter(
+            listItems={menuList(clickedItem,themeMode).filter(
               (item) => item.group === menuGroups.news
             )}
             clickedItem={clickedItem}
@@ -106,7 +108,7 @@ const Menu = ({ themeMode }) => {
         />
         {menuGroupOpened === menuGroups.watchlist && (
           <MenuGroupItems
-            listItems={menuList(clickedItem).filter(
+            listItems={menuList(clickedItem,themeMode).filter(
               (item) => item.group === menuGroups.watchlist
             )}
             clickedItem={clickedItem}
@@ -114,7 +116,7 @@ const Menu = ({ themeMode }) => {
             isClosed={closeGroup === menuGroups.watchlist ? true : false}
           />
         )}
-        {menuList(clickedItem)
+        {menuList(clickedItem,themeMode)
           .filter((item) => item.group === menuGroups.feedback)
           .map((item) => (
             <MenuItem
@@ -124,7 +126,7 @@ const Menu = ({ themeMode }) => {
               item={item}
             />
           ))}
-        {menuList(clickedItem)
+        {menuList(clickedItem,themeMode)
           .filter((item) => item.group === menuGroups.settings)
           .map((item) => (
             <MenuItem
@@ -135,7 +137,7 @@ const Menu = ({ themeMode }) => {
             />
           ))}
         {!accessToken ? (
-          menuList(clickedItem)
+          menuList(clickedItem,themeMode)
             .filter((item) => item.group === menuGroups.login)
             .map((item) => (
               <MenuItem

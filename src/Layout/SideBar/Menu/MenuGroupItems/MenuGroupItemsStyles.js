@@ -47,7 +47,7 @@ export const Container = styled.div`
       : `1px solid ${
           themeMode === "light"
             ? theme.general.colors.secondary
-            : theme.general.colors.primary
+            : theme.general.button.onHover.normal
         }`};
   border-bottom-left-radius: 17px;
 `;
@@ -81,8 +81,5 @@ export const text = styled.span`
   margin-top: 3px;
   font-weight: ${(props) => props.theme.general.fontWeight.md};
   font-size: ${(props) => props.theme.general.fontSize.md};
-  color: ${(props) =>
-    props.clicked
-      ? props.theme.general.colors.primary
-      : props.theme.general.colors.secondary};
+  color: ${(props) => props.color};
 `;

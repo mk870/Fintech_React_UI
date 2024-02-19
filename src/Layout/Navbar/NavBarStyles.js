@@ -47,7 +47,6 @@ export const mobileMenuIcon = styled.div`
 export const Title = styled.span`
   font-size: ${({ theme }) => theme.general.fontSize.xlg};
   font-weight: ${({ theme }) => theme.general.fontWeight.lg};
-  //margin-top: 20px;
   color: ${({ themeMode, theme }) =>
     themeMode === "light" ? theme.light.textColor : theme.dark.textColor};
 `;
@@ -117,6 +116,7 @@ export const Login = styled.div`
   font-size: ${({ theme }) => theme.general.fontSize.md};
   &:hover {
     cursor: pointer;
+    background-color: ${({ theme }) => theme.general.button.onHover.normal};
   }
   @media (max-width: 550px) {
     font-size: ${({ theme }) => theme.general.fontSize.sm};
