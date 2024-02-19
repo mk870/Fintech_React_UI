@@ -4,6 +4,7 @@ export const AppTheme = {
       primary: "#4D09CD",
       secondary: "#85848E",
       highlitedMenuBackGround: "#E4E4E7",
+      red: "red",
     },
     fontSize: {
       xlg: "18px",
@@ -18,6 +19,13 @@ export const AppTheme = {
       md: "400",
       sm: "300",
     },
+    button:{
+      onHover:{
+        normal: "#7D61F0",
+        red:"",
+        green:"",
+      }
+    }
   },
   dark: {
     textColor: "white",

@@ -11,7 +11,7 @@ import Drawer from "Layout/Views/MobileView/Drawer/Drawer";
 
 const Navbar = ({ mobileView, screenSize }) => {
   const [searchItem, setSearchItem] = useState("");
-  const [openMobileMenu,setOpenMobileMenu] = useState(false);
+  const [openMobileMenu, setOpenMobileMenu] = useState(false);
   const user = useSelector((state) => state.user.value);
   const theme = AppTheme;
   const { accessToken } = useContext(AppContext);
@@ -31,7 +31,10 @@ const Navbar = ({ mobileView, screenSize }) => {
     <styled.container themeMode={user.themeMode} mobileView={mobileView}>
       <styled.SectionOne mobileView={mobileView}>
         {mobileView && (
-          <styled.mobileMenuIcon themeMode={user.themeMode} onClick={()=>setOpenMobileMenu((value)=>!value)}>
+          <styled.mobileMenuIcon
+            themeMode={user.themeMode}
+            onClick={() => setOpenMobileMenu((value) => !value)}
+          >
             <IoIosMenu
               color={theme.general.colors.secondary}
               size={screenSize < 550 ? 25 : 30}
@@ -53,6 +56,12 @@ const Navbar = ({ mobileView, screenSize }) => {
           handleEnter={onEnter}
           placeHolder={"Search"}
           themeMode={user.themeMode}
+          isBoxShadow={true}
+          backgroundColor={
+            user.themeMode === "light"
+              ? theme.light.primaryBackground
+              : theme.dark.secondaryBackground
+          }
         />
         <styled.Icon
           color={
@@ -70,7 +79,7 @@ const Navbar = ({ mobileView, screenSize }) => {
           <styled.Login>Login</styled.Login>
         )}
       </styled.SectionTwo>
-      {openMobileMenu && <Drawer toggleMenu={setOpenMobileMenu}/>}
+      {openMobileMenu && <Drawer toggleMenu={setOpenMobileMenu} />}
     </styled.container>
   );
 };
